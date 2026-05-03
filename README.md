@@ -10,11 +10,11 @@ HED (Hierarchical Event Descriptors) is a framework for systematically describin
 
 The HED online tools are a set of web-based applications for validating and analyzing Hierarchical Event Descriptors (HED) annotations. These tools rely on are designed to be used in a web browser and can be deployed locally or from a Docker container.
 
-| Resource              | URL                                                                                | Description                            |
-| --------------------- | ---------------------------------------------------------------------------------- | -------------------------------------- |
-| **HED Tools (PyPI)**  | [https://hedtools.org/hed](https://hedtools.org/hed)                               | Production version of HED online tools |
-| **HED Tools (main)**  | [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)                       | Latest features, some experimental     |
-| **HED Resources**     | [https://www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)     | Documentation and tutorials            |
+| Resource              | URL                                                                                      | Description                            |
+| --------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------- |
+| **HED Tools (PyPI)**  | [https://hedtools.org/hed](https://hedtools.org/hed)                                     | Production version of HED online tools |
+| **HED Tools (main)**  | [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)                             | Latest features, some experimental     |
+| **HED Resources**     | [https://www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)           | Documentation and tutorials            |
 | **API Documentation** | [https://www.hedtags.org/hed-server](https://www.hedtags.org/hed-server)                 | Technical documentation                |
 | **GitHub Repository** | [https://github.com/hed-standard/hed-server](https://github.com/hed-standard/hed-server) | Source code and issues                 |
 
@@ -39,8 +39,8 @@ The HED online tools include an AI assistant widget powered by the Open Science 
 
 The following table summarizes the available online tools. The tools are organized around the types of data that the tools handle. The Actions refer to the types of actions that can be performed on the data through the online tools. Each action is linked to its corresponding documentation to provide additional information.
 
-| Data type        | Action                                                                                                      | Description                                                                                                        |
-| ---------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Data type        | Action                                                                                                         | Description                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | **Events**       | [Validate](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)                         | Validate HED in a tabular file and its sidecar.                                                                    |
 |                  | [Assemble HED annotations](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)         | Return a list of the assembled HED strings for a tabular file.                                                     |
 |                  | [Search HED strings](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)               | Return a vector of 0's and 1's based on a HED search query of HED annotation strings extracted from an event file. |
