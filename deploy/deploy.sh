@@ -6,11 +6,11 @@
 # bind_address can be an IP like 0.0.0.0 (default) or 127.0.0.1 to restrict to localhost
 #
 # The script can be run from:
-#   1. Inside the hed-web repo checkout (auto-detected, no clone needed)
+#   1. Inside the hed-server repo checkout (auto-detected, no clone needed)
 #   2. A clean deploy directory (will clone from GitHub)
-#   3. A directory with an existing hed-web/ subdirectory (reuses it)
+#   3. A directory with an existing hed-server/ subdirectory (reuses it)
 #   4. With LOCAL_REPO set to copy from a local checkout:
-#      LOCAL_REPO=/path/to/hed-web sudo bash deploy.sh main dev
+#      LOCAL_REPO=/path/to/hed-server sudo bash deploy.sh main dev
 
 ##### Constants
 BRANCH="${1:-main}"
@@ -19,7 +19,7 @@ BIND_ADDRESS="${3:-0.0.0.0}"
 DEPLOY_DIR=$(pwd)
 RUNNING_IN_REPO=false
 
-# Detect if we're running from inside the hed-web repo itself
+# Detect if we're running from inside the hed-server repo itself
 if [ -d "${DEPLOY_DIR}/hedweb" ] && [ -d "${DEPLOY_DIR}/deploy" ] && [ -f "${DEPLOY_DIR}/pyproject.toml" ]; then
     RUNNING_IN_REPO=true
 fi
@@ -41,21 +41,21 @@ else
     HED_INSTALL_SOURCE="pypi"
 fi
 
-GIT_WEB_REPO_URL="https://github.com/hed-standard/hed-web"
+GIT_WEB_REPO_URL="https://github.com/hed-standard/hed-server"
 GIT_WEB_REPO_BRANCH="$BRANCH"
 CONTAINER_PORT=80
 
 # Directory paths
-GIT_HED_WEB_DIR="${DEPLOY_DIR}/hed-web"
+GIT_HED_SERVER_DIR="${DEPLOY_DIR}/hed-server"
 CODE_DEPLOY_DIR="${DEPLOY_DIR}/hedtools"
-SOURCE_DEPLOY_DIR="${GIT_HED_WEB_DIR}/deploy"
+SOURCE_DEPLOY_DIR="${GIT_HED_SERVER_DIR}/deploy"
 CONFIG_FILE="${CODE_DEPLOY_DIR}/config.py"
 
 # Source files
 BASE_CONFIG_FILE="${SOURCE_DEPLOY_DIR}/base_config.py"
 SOURCE_DOCKERFILE="${SOURCE_DEPLOY_DIR}/Dockerfile"
 LOGROTATE_CONF_FILE="${SOURCE_DEPLOY_DIR}/gunicorn-logrotate.conf"
-WEB_CODE_DIR="${GIT_HED_WEB_DIR}/hedweb"
+WEB_CODE_DIR="${GIT_HED_SERVER_DIR}/hedweb"
 
 ##### Functions
 
@@ -68,29 +68,29 @@ error_exit() {
 # Clone or locate the repository
 clone_github_repos() {
     if [ "${RUNNING_IN_REPO}" = true ]; then
-        echo "Running from inside the hed-web repo at ${DEPLOY_DIR}..."
-        GIT_HED_WEB_DIR="${DEPLOY_DIR}"
-        SOURCE_DEPLOY_DIR="${GIT_HED_WEB_DIR}/deploy"
+        echo "Running from inside the hed-server repo at ${DEPLOY_DIR}..."
+        GIT_HED_SERVER_DIR="${DEPLOY_DIR}"
+        SOURCE_DEPLOY_DIR="${GIT_HED_SERVER_DIR}/deploy"
         BASE_CONFIG_FILE="${SOURCE_DEPLOY_DIR}/base_config.py"
         SOURCE_DOCKERFILE="${SOURCE_DEPLOY_DIR}/Dockerfile"
         LOGROTATE_CONF_FILE="${SOURCE_DEPLOY_DIR}/gunicorn-logrotate.conf"
-        WEB_CODE_DIR="${GIT_HED_WEB_DIR}/hedweb"
+        WEB_CODE_DIR="${GIT_HED_SERVER_DIR}/hedweb"
         return 0
     fi
 
-    if [ -d "${GIT_HED_WEB_DIR}" ]; then
-        echo "Using existing repository at ${GIT_HED_WEB_DIR}..."
+    if [ -d "${GIT_HED_SERVER_DIR}" ]; then
+        echo "Using existing repository at ${GIT_HED_SERVER_DIR}..."
         return 0
     fi
 
     if [ -n "${LOCAL_REPO}" ]; then
-        echo "Copying local repository from ${LOCAL_REPO} to ${GIT_HED_WEB_DIR}..."
-        cp -r "${LOCAL_REPO}" "${GIT_HED_WEB_DIR}" || error_exit "Failed to copy local repo from ${LOCAL_REPO}"
+        echo "Copying local repository from ${LOCAL_REPO} to ${GIT_HED_SERVER_DIR}..."
+        cp -r "${LOCAL_REPO}" "${GIT_HED_SERVER_DIR}" || error_exit "Failed to copy local repo from ${LOCAL_REPO}"
         return 0
     fi
 
     echo "Cloning repository ${GIT_WEB_REPO_URL} into ${DEPLOY_DIR} using branch ${GIT_WEB_REPO_BRANCH}..."
-    git clone --branch "${GIT_WEB_REPO_BRANCH}" "${GIT_WEB_REPO_URL}" || error_exit "Failed to clone repo ${GIT_WEB_REPO_URL}.\nIf the network is unavailable, either:\n  1. Run this script from inside the hed-web repo checkout\n  2. Place the repo at ${GIT_HED_WEB_DIR} before running this script\n  3. Place an existing hed-web/ subdirectory in the deploy directory\n  4. Set LOCAL_REPO=/path/to/hed-web to copy from a local checkout"
+    git clone --branch "${GIT_WEB_REPO_BRANCH}" "${GIT_WEB_REPO_URL}" || error_exit "Failed to clone repo ${GIT_WEB_REPO_URL}.\nIf the network is unavailable, either:\n  1. Run this script from inside the hed-server repo checkout\n  2. Place the repo at ${GIT_HED_SERVER_DIR} before running this script\n  3. Place an existing hed-server/ subdirectory in the deploy directory\n  4. Set LOCAL_REPO=/path/to/hed-server to copy from a local checkout"
 }
 
 # Create the necessary web directory structure and copy config files
@@ -102,9 +102,9 @@ setup_web_directory() {
     cp "${LOGROTATE_CONF_FILE}" "${DEPLOY_DIR}/gunicorn-logrotate.conf" || error_exit "Failed to copy gunicorn logrotate config"
     # When running from inside the repo, these are already in place
     if [ "${RUNNING_IN_REPO}" = false ]; then
-        cp "${GIT_HED_WEB_DIR}/pyproject.toml" "${DEPLOY_DIR}/pyproject.toml" || error_exit "Failed to copy pyproject.toml"
-        cp "${GIT_HED_WEB_DIR}/setup.py" "${DEPLOY_DIR}/setup.py" 2>/dev/null || echo "No setup.py found (optional)"
-        cp "${GIT_HED_WEB_DIR}/README.md" "${DEPLOY_DIR}/README.md" || error_exit "Failed to copy README.md"
+        cp "${GIT_HED_SERVER_DIR}/pyproject.toml" "${DEPLOY_DIR}/pyproject.toml" || error_exit "Failed to copy pyproject.toml"
+        cp "${GIT_HED_SERVER_DIR}/setup.py" "${DEPLOY_DIR}/setup.py" 2>/dev/null || echo "No setup.py found (optional)"
+        cp "${GIT_HED_SERVER_DIR}/README.md" "${DEPLOY_DIR}/README.md" || error_exit "Failed to copy README.md"
     fi
     cp -r "${WEB_CODE_DIR}" "${CODE_DEPLOY_DIR}" || error_exit "Failed to copy web code"
 }
@@ -141,7 +141,7 @@ cleanup() {
         # Only remove files we created; do NOT delete the repo itself
         rm -f "${DEPLOY_DIR}/Dockerfile" "${DEPLOY_DIR}/gunicorn-logrotate.conf"
     else
-        rm -rf "${GIT_HED_WEB_DIR}" "Dockerfile" "gunicorn-logrotate.conf" "pyproject.toml" "setup.py" "README.md"
+        rm -rf "${GIT_HED_SERVER_DIR}" "Dockerfile" "gunicorn-logrotate.conf" "pyproject.toml" "setup.py" "README.md"
     fi
 }
 

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // If it's the View/Blob link, hijack it
                 else if (parsed.pathname.includes("/blob/") || parsed.pathname.includes("/tree/")) {
                     // Change URL to repo root
-                    link.href = "https://github.com/hed-standard/hed-web";
+                    link.href = "https://github.com/hed-standard/hed-server";
                     link.title = "Go to repository";
                     link.setAttribute("aria-label", "Go to repository");
 

@@ -1,4 +1,4 @@
-# HED-web developer instructions
+# HED-server developer instructions
 
 > **Local environment**: Check `.status/local-environment.md` (not version-controlled) for platform-specific setup — shell, venv activation path, and summary-file conventions.
 

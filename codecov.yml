@@ -1,4 +1,4 @@
-# Codecov configuration for hed-web
+# Codecov configuration for hed-server
 # Documentation: https://docs.codecov.com/docs/codecov-yaml
 
 coverage:

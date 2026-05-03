@@ -20,8 +20,8 @@ omit =
 # Normalize package paths across Windows and Linux for combining coverage data
 source =
     hedweb
-    */hed-web/hedweb
-    *\\hed-web\\hedweb
+    */hed-server/hedweb
+    *\\hed-server\\hedweb
     */site-packages/hedweb
     *\\site-packages\\hedweb
 

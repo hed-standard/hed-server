@@ -11,8 +11,8 @@ const SEARCH_CONFIG = {
     sources: [
         {
             name: 'HED Web Tools',
-            url: 'https://www.hedtags.org/hed-web',
-            searchIndex: 'https://www.hedtags.org/hed-web/searchindex.js',
+            url: 'https://www.hedtags.org/hed-server',
+            searchIndex: 'https://www.hedtags.org/hed-server/searchindex.js',
             description: 'Web-based HED tools and REST API',
             priority: 1,
             color: '#0d6efd'  // Bootstrap primary blue

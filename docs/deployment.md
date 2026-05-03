@@ -17,8 +17,8 @@ For Docker deployment:
 ### Clone the repository
 
 ```bash
-git clone https://github.com/hed-standard/hed-web
-cd hed-web
+git clone https://github.com/hed-standard/hed-server
+cd hed-server
 ```
 
 ## Local development setup
@@ -105,7 +105,7 @@ mkdir -p ~/deploy_hed
 cd ~/deploy_hed
 
 # Download deployment script
-curl -fsSL -o deploy.sh https://raw.githubusercontent.com/hed-standard/hed-web/main/deploy/deploy.sh
+curl -fsSL -o deploy.sh https://raw.githubusercontent.com/hed-standard/hed-server/main/deploy/deploy.sh
 
 # Make script executable
 chmod +x deploy.sh
@@ -612,7 +612,7 @@ If you encounter issues not covered here:
    - Docker: `docker logs hedtools`
    - Production: Check `/var/log/hedtools/`
 
-2. **Search GitHub issues**: [hed-web issues](https://github.com/hed-standard/hed-web/issues)
+2. **Search GitHub issues**: [hed-server issues](https://github.com/hed-standard/hed-server/issues)
 
 3. **Create a new issue** with:
 
@@ -673,7 +673,7 @@ If you encounter issues not covered here:
 
 ### Community
 
-- **Issue tracker**: [hed-web issues](https://github.com/hed-standard/hed-web/issues)
+- **Issue tracker**: [hed-server issues](https://github.com/hed-standard/hed-server/issues)
 - **HED maintainers email**: [hed.maintainers@gmail.com](mailto:hed.maintainers@gmail.com)
 
 ## Appendix: Quick reference

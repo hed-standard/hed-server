@@ -57,9 +57,9 @@ hedweb = "hedweb.runserver:main"
 
 [project.urls]
 Homepage = "https://www.hedtags.org"
-Documentation = "https://www.hedtags.org/hed-web"
-Repository = "https://github.com/hed-standard/hed-web.git"
-Issues = "https://github.com/hed-standard/hed-web/issues"
+Documentation = "https://www.hedtags.org/hed-server"
+Repository = "https://github.com/hed-standard/hed-server.git"
+Issues = "https://github.com/hed-standard/hed-server/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

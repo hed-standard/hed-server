@@ -1,6 +1,6 @@
 # HED online tools
 
-![Python3](https://img.shields.io/badge/python-%3E=3.10-blue.svg) [![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-web) [![Maintainability](https://qlty.sh/gh/hed-standard/projects/hed-web/maintainability.svg)](https://qlty.sh/gh/hed-standard/projects/hed-web) [![Code Coverage](https://qlty.sh/gh/hed-standard/projects/hed-web/coverage.svg)](https://qlty.sh/gh/hed-standard/projects/hed-web)
+![Python3](https://img.shields.io/badge/python-%3E=3.10-blue.svg) [![Documentation](https://img.shields.io/badge/docs-hedtags.org-blue.svg)](https://www.hedtags.org/hed-server) [![Maintainability](https://qlty.sh/gh/hed-standard/projects/hed-server/maintainability.svg)](https://qlty.sh/gh/hed-standard/projects/hed-server) [![Code Coverage](https://qlty.sh/gh/hed-standard/projects/hed-server/coverage.svg)](https://qlty.sh/gh/hed-standard/projects/hed-server)
 
 ## What is HED?
 
@@ -15,8 +15,8 @@ The HED online tools are a set of web-based applications for validating and anal
 | **HED Tools (PyPI)**  | [https://hedtools.org/hed](https://hedtools.org/hed)                               | Production version of HED online tools |
 | **HED Tools (main)**  | [https://hedtools.org/hed_dev](https://hedtools.org/hed_dev)                       | Latest features, some experimental     |
 | **HED Resources**     | [https://www.hedtags.org/hed-resources](https://www.hedtags.org/hed-resources)     | Documentation and tutorials            |
-| **API Documentation** | [https://www.hedtags.org/hed-web](https://www.hedtags.org/hed-web)                 | Technical documentation                |
-| **GitHub Repository** | [https://github.com/hed-standard/hed-web](https://github.com/hed-standard/hed-web) | Source code and issues                 |
+| **API Documentation** | [https://www.hedtags.org/hed-server](https://www.hedtags.org/hed-server)                 | Technical documentation                |
+| **GitHub Repository** | [https://github.com/hed-standard/hed-server](https://github.com/hed-standard/hed-server) | Source code and issues                 |
 
 ### User Guide
 
@@ -41,26 +41,26 @@ The following table summarizes the available online tools. The tools are organiz
 
 | Data type        | Action                                                                                                      | Description                                                                                                        |
 | ---------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **Events**       | [Validate](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)                         | Validate HED in a tabular file and its sidecar.                                                                    |
-|                  | [Assemble HED annotations](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)         | Return a list of the assembled HED strings for a tabular file.                                                     |
-|                  | [Search HED strings](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)               | Return a vector of 0's and 1's based on a HED search query of HED annotation strings extracted from an event file. |
-|                  | [Generate JSON sidecar template](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)   | Create a sidecar template from a tabular file.                                                                     |
-|                  | [Execute remodel script](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)           | Execute JSON script of [HED remodeling commands](https://www.hedtags.org/table-remodeler/operations/index.html).   |
-| **Sidecars**     | [Validate](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)                         | Validate HED in a BIDS JSON sidecar.                                                                               |
-|                  | [Convert to long](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)                  | Convert HED tags in a sidecar to full paths.                                                                       |
-|                  | [Convert to short](https://www.hedtags.org/hed-web/user_guide.html#validate-an-events-file)                 | Convert HED tags in a sidecar to single tags.                                                                      |
-|                  | [Extract HED spreadsheet](https://www.hedtags.org/hed-web/user_guide.html#extract-spreadsheet-from-sidecar) | Create a 4-column spreadsheet from HED in a sidecar.                                                               |
-|                  | [Merge HED spreadsheet](https://www.hedtags.org/hed-web/user_guide.html#merge-spreadsheet-with-sidecar)     | Merge HED from spreadsheet into a JSON sidecar.                                                                    |
-| **Spreadsheets** | [Validate](https://www.hedtags.org/hed-web/user_guide.html#validate-a-spreadsheet)                          | Validate HED in a spreadsheet (.xlsx or .tsv).                                                                     |
-|                  | [Convert to long](https://www.hedtags.org/hed-web/user_guide.html#convert-spreadsheet-to-long)              | Convert HED tags in a spreadsheet to full paths.                                                                   |
-|                  | [Convert to short](https://www.hedtags.org/hed-web/user_guide.html#convert-spreadsheet-to-short)            | Convert HED tags in a spreadsheet to single tags.                                                                  |
-| **Strings**      | [Validate](https://www.hedtags.org/hed-web/user_guide.html#working-with-hed-strings)                        | Validate a HED string.                                                                                             |
-|                  | [Convert to long](https://www.hedtags.org/hed-web/user_guide.html#validate-a-hed-string)                    | Convert a HED string to full paths.                                                                                |
-|                  | [Convert to short](https://www.hedtags.org/hed-web/user_guide.html#convert-string-to-short)                 | Convert a HED string to single tags.                                                                               |
-|                  | [Search HED strings](https://www.hedtags.org/hed-web/user_guide.html#search-hed-strings)                    | Search a HED string based on a HED search query.                                                                   |
-| **Schemas**      | [Validate](https://www.hedtags.org/hed-web/user_guide.html#validate-a-schema)                               | Validate a HED schema.                                                                                             |
-|                  | [Convert schema](https://www.hedtags.org/hed-web/user_guide.html#convert-a-schema)                          | Convert a HED schema to other format.                                                                              |
-|                  | [Compare HED schemas](https://www.hedtags.org/hed-web/user_guide.html#compare-schemas)                      | Show differences between two HED schemas.                                                                          |
+| **Events**       | [Validate](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)                         | Validate HED in a tabular file and its sidecar.                                                                    |
+|                  | [Assemble HED annotations](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)         | Return a list of the assembled HED strings for a tabular file.                                                     |
+|                  | [Search HED strings](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)               | Return a vector of 0's and 1's based on a HED search query of HED annotation strings extracted from an event file. |
+|                  | [Generate JSON sidecar template](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)   | Create a sidecar template from a tabular file.                                                                     |
+|                  | [Execute remodel script](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)           | Execute JSON script of [HED remodeling commands](https://www.hedtags.org/table-remodeler/operations/index.html).   |
+| **Sidecars**     | [Validate](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)                         | Validate HED in a BIDS JSON sidecar.                                                                               |
+|                  | [Convert to long](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)                  | Convert HED tags in a sidecar to full paths.                                                                       |
+|                  | [Convert to short](https://www.hedtags.org/hed-server/user_guide.html#validate-an-events-file)                 | Convert HED tags in a sidecar to single tags.                                                                      |
+|                  | [Extract HED spreadsheet](https://www.hedtags.org/hed-server/user_guide.html#extract-spreadsheet-from-sidecar) | Create a 4-column spreadsheet from HED in a sidecar.                                                               |
+|                  | [Merge HED spreadsheet](https://www.hedtags.org/hed-server/user_guide.html#merge-spreadsheet-with-sidecar)     | Merge HED from spreadsheet into a JSON sidecar.                                                                    |
+| **Spreadsheets** | [Validate](https://www.hedtags.org/hed-server/user_guide.html#validate-a-spreadsheet)                          | Validate HED in a spreadsheet (.xlsx or .tsv).                                                                     |
+|                  | [Convert to long](https://www.hedtags.org/hed-server/user_guide.html#convert-spreadsheet-to-long)              | Convert HED tags in a spreadsheet to full paths.                                                                   |
+|                  | [Convert to short](https://www.hedtags.org/hed-server/user_guide.html#convert-spreadsheet-to-short)            | Convert HED tags in a spreadsheet to single tags.                                                                  |
+| **Strings**      | [Validate](https://www.hedtags.org/hed-server/user_guide.html#working-with-hed-strings)                        | Validate a HED string.                                                                                             |
+|                  | [Convert to long](https://www.hedtags.org/hed-server/user_guide.html#validate-a-hed-string)                    | Convert a HED string to full paths.                                                                                |
+|                  | [Convert to short](https://www.hedtags.org/hed-server/user_guide.html#convert-string-to-short)                 | Convert a HED string to single tags.                                                                               |
+|                  | [Search HED strings](https://www.hedtags.org/hed-server/user_guide.html#search-hed-strings)                    | Search a HED string based on a HED search query.                                                                   |
+| **Schemas**      | [Validate](https://www.hedtags.org/hed-server/user_guide.html#validate-a-schema)                               | Validate a HED schema.                                                                                             |
+|                  | [Convert schema](https://www.hedtags.org/hed-server/user_guide.html#convert-a-schema)                          | Convert a HED schema to other format.                                                                              |
+|                  | [Compare HED schemas](https://www.hedtags.org/hed-server/user_guide.html#compare-schemas)                      | Show differences between two HED schemas.                                                                          |
 
 **Events files** are tabular (tab-separated) files. The first row of an events file contains column names. Each subsequent row corresponds to an event marker at a specified time in the corresponding data file.
 
@@ -74,11 +74,11 @@ The following table summarizes the available online tools. The tools are organiz
 
 **Schemas** refer to HED schema vocabularies, which may be either in .mediawiki or .xml format. These tools are used by schema developers creating the HED vocabularies and are not of interest to annotators or analysts.
 
-More detailed help on using these online tools is available in the HED online tools [**User guide**](https://www.hedtags.org/hed-web/user_guide.html#).
+More detailed help on using these online tools is available in the HED online tools [**User guide**](https://www.hedtags.org/hed-server/user_guide.html#).
 
 #### HED REST services
 
-The HED online tools are also available as callable web services. More detailed help on calling these services is available at: [**HED RESTful services**](https://www.hedtags.org/hed-web/user_guide.html#using-restful-services) Downloadable examples of calling these services from a MATLAB program can be found in the GitHub MATLAB [**Web service demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos).
+The HED online tools are also available as callable web services. More detailed help on calling these services is available at: [**HED RESTful services**](https://www.hedtags.org/hed-server/user_guide.html#using-restful-services) Downloadable examples of calling these services from a MATLAB program can be found in the GitHub MATLAB [**Web service demos**](https://github.com/hed-standard/hed-matlab/tree/main/hedmat/web_services_demos).
 
 #### Where to find out more?
 

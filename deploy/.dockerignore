@@ -1,3 +1,3 @@
 # Ignore the cloned git repository to reduce build context
-hed-web/
+hed-server/
 # Keep only what we explicitly copy

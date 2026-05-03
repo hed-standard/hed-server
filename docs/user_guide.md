@@ -689,5 +689,5 @@ All services return JSON with:
 
 - 📖 [HED specification](https://www.hedtags.org/hed-specification)
 - � [HED resources](https://www.hedtags.org/hed-resources)
-- 🐛 [Report issues](https://github.com/hed-standard/hed-web/issues)
+- 🐛 [Report issues](https://github.com/hed-standard/hed-server/issues)
 - 📧 [Contact HED team](mailto:hed.maintainers@gmail.com)

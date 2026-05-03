@@ -67,7 +67,7 @@ html_theme_options = {
         "color-brand-primary": "#58a6ff",
         "color-brand-content": "#58a6ff",
     },
-    "source_repository": "https://github.com/hed-standard/hed-web/",
+    "source_repository": "https://github.com/hed-standard/hed-server/",
     "source_branch": "main",
     "source_directory": "docs/",
 }
