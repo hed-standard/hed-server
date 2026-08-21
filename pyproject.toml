@@ -45,7 +45,7 @@ docs = [
     "linkify-it-py>=2.0.3"
 ]
 dev = [
-    "ruff>=0.8.0",
+    "ruff>=0.16.0",
     "coverage>=7.0.0",
     "typos>=1.29.0",
     "mdformat==0.7.22",
@@ -110,8 +110,10 @@ ignore = [
     "N806",  # non-lowercase variables in functions (scientific code)
 ]
 
+# __init__.py files: unused imports are re-exports, and their import order is
+# curated by hand to avoid circular imports - isort must not reorder them.
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["F401"]
+"__init__.py" = ["F401", "I001"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["hedweb"]

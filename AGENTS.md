@@ -51,7 +51,8 @@ Activate the virtual environment (`.venv`) before any command.
 
 ## Git and PRs
 
-- Development happens on personal forks; feature branches are `feature/<issue-number>-short-description`; PRs target `main` on `hed-standard/hed-server`. Create an issue first except for minor fixes.
+- Hosted at hed-standard; `origin` is the VisLab fork and `upstream` is hed-standard. Local `main` is a clean mirror of `upstream/main` - never commit or merge to it locally.
+- Development happens on branches based on `upstream/main`; feature branches are `feature/<issue-number>-short-description`; PRs target `main` on `hed-standard/hed-server`. Create an issue first except for minor fixes.
 - Atomic commits; subject line under 50 chars, imperative, sentence case; no emojis; no AI attribution in commits or PRs.
 - Before a PR: tests pass, `ruff check` and `ruff format --check` clean, `typos` clean, new functionality has tests, and the diff has been reviewed.
 - CI (all must be green before merge): `ci.yaml` (unit + service tests), `test_server_dev.yaml` (Docker build + service tests), `ruff.yaml`, `typos.yaml`, `mdformat.yaml`, `docs.yaml`, `links.yaml` (weekly). Details live in `.github/workflows/`.

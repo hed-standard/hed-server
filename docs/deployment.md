@@ -342,28 +342,34 @@ The application uses a Python-based configuration system. Edit `config.py` to cu
 ```python
 import os
 
+
 class Config:
     """Base configuration"""
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
-    
+
+    SECRET_KEY = os.environ.get("SECRET_KEY") or "dev-secret-key-change-in-production"
+
     # Upload settings
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
-    UPLOAD_FOLDER = '/tmp/hed_uploads'
-    
+    UPLOAD_FOLDER = "/tmp/hed_uploads"
+
     # HED schema settings
-    HED_CACHE_FOLDER = '/var/cache/schema_cache'
-    
+    HED_CACHE_FOLDER = "/var/cache/schema_cache"
+
     # Flask settings
     WTF_CSRF_ENABLED = True
     WTF_CSRF_TIME_LIMIT = None
 
+
 class ProductionConfig(Config):
     """Production configuration"""
+
     DEBUG = False
     TESTING = False
 
+
 class DevelopmentConfig(Config):
     """Development configuration"""
+
     DEBUG = True
     TESTING = False
 ```
@@ -475,21 +481,21 @@ url = "http://localhost:5000/services/strings/validate"
 
 # Prepare request
 files = {
-    'schema_version': (None, '8.2.0'),
-    'hed_strings': (None, 'Sensory-event, Visual-presentation'),
-    'check_for_warnings': (None, 'on')
+    "schema_version": (None, "8.2.0"),
+    "hed_strings": (None, "Sensory-event, Visual-presentation"),
+    "check_for_warnings": (None, "on"),
 }
 
 # Send request
 response = requests.post(url, files=files)
 result = response.json()
 
-if result.get('error_type'):
+if result.get("error_type"):
     print(f"Error: {result['error_type']}")
-    print(result.get('error_msg'))
+    print(result.get("error_msg"))
 else:
     print("Validation successful!")
-    if result.get('data'):
+    if result.get("data"):
         print(f"Issues found: {result['data']}")
 ```
 
@@ -503,21 +509,21 @@ import requests
 url = "http://localhost:5000/services/events/validate"
 
 # Prepare files
-with open('events.tsv', 'rb') as events_file:
+with open("events.tsv", "rb") as events_file:
     files = {
-        'events_file': ('events.tsv', events_file, 'text/tab-separated-values'),
-        'schema_version': (None, '8.2.0'),
-        'check_for_warnings': (None, 'on')
+        "events_file": ("events.tsv", events_file, "text/tab-separated-values"),
+        "schema_version": (None, "8.2.0"),
+        "check_for_warnings": (None, "on"),
     }
-    
+
     response = requests.post(url, files=files)
     result = response.json()
-    
-    if result.get('error_type'):
+
+    if result.get("error_type"):
         print(f"Error: {result['error_type']}")
     else:
         print("Validation complete")
-        print(result.get('msg_category'))
+        print(result.get("msg_category"))
 ```
 
 ### API response format
