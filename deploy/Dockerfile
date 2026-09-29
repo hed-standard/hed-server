@@ -45,9 +45,14 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev && \
     pip3 install --upgrade pip
 
-# Install the hedweb wheel built in the previous stage.
+# Install the hedweb wheel built in the previous stage. CACHE_BUST is referenced here as well
+# because, while pyproject.toml depends on hedtools by git URL (the HED 8.5.0 transition), this is
+# the layer that clones hed-python main: without the bust, an unchanged wheel would reuse a cached
+# layer holding an old hed-python commit, and the pypi branch below would keep it.
+ARG CACHE_BUST
 COPY --from=builder /build/dist/hedweb-*.whl ./
-RUN WHEEL_FILE=$(ls hedweb-*.whl) && pip3 install "${WHEEL_FILE}[prod]"
+RUN echo "Cache bust: ${CACHE_BUST}" && WHEEL_FILE=$(ls hedweb-*.whl) && \
+    pip3 install --no-cache-dir "${WHEEL_FILE}[prod]"
 
 # Copy configuration file for the application
 COPY deploy/base_config.py ./config.py
@@ -55,8 +60,11 @@ COPY deploy/base_config.py ./config.py
 # Install HEDTools (hed-python). HED_INSTALL_SOURCE selects where from:
 #   git-main -> hed-python's main branch via git (dev; bleeding edge)
 #   pypi     -> released package (prod; default)
+# While pyproject.toml depends on hedtools by git URL (until the next hedtools release), the wheel
+# install above has already brought in a fresh hed-python main, and the pypi branch below finds
+# hedtools>=1.2.0 satisfied and changes nothing: both images run hed-python main. Once pyproject
+# returns to a version floor, the pypi branch installs the released package again.
 ARG HED_INSTALL_SOURCE=pypi
-ARG CACHE_BUST
 # Referencing CACHE_BUST inside the RUN is what actually invalidates this layer: a changing
 # value (deploy.sh passes $(date +%s)) forces a fresh hedtools install instead of reusing a
 # cached layer - important for HED_INSTALL_SOURCE=git-main, where each build should pull the

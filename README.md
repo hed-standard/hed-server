@@ -140,6 +140,16 @@ pip install -e .[dev,docs]
 
 **Note**: For local development, you only need `[dev]`. The Flask development server (`python hedweb/runserver.py`) is used instead of gunicorn.
 
+### Where hedtools comes from during the HED 8.5.0 transition
+
+Until the next hedtools release, `pyproject.toml` depends on hedtools by git URL (`hed-python` main), because hedweb needs the staged tabular validation and the `value-text` character set of HED 8.5.0, which are not on PyPI yet. Consequences:
+
+- `pip install -e .` clones hed-python, so `git` must be on the PATH, and reinstalling is how you pick up newer hed-python commits.
+- Both Docker images, production and development, run hed-python main for now (see `deploy/README.md`).
+- hedweb cannot be uploaded to PyPI while the git URL is in `dependencies`.
+
+When hedtools releases with those features, the dependency goes back to a version floor (`hedtools>=<that release>`) and the production image returns to the PyPI package with no other change.
+
 ## Testing
 
 **Note**: The following instructions assume you are running in an activated virtual environment.

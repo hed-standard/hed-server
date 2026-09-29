@@ -146,7 +146,7 @@ The `deploy.sh` script accepts three optional parameters:
 - Container name: `hedtools`
 - Host port: `33000`
 - URL prefix: `/hed`
-- HED source: PyPI release (`hedtools` package)
+- HED source: PyPI release (`hedtools` package). During the HED 8.5.0 transition this is hed-python main instead; see `deploy/README.md`.
 
 **Development environment (`dev`):**
 

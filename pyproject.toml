@@ -27,7 +27,10 @@ dependencies = [
     # 1.2.0 is the first release with the schema-version manifest fast path:
     # get_available_hed_versions() and single-version downloads resolve from schema_versions.json
     # on the raw/CDN host instead of the metered GitHub REST API, so hed-server needs no GitHub token.
-    "hedtools>=1.2.0",
+    # Until the next hedtools release: hedweb needs the staged tabular validation and the value-text
+    # character set that are only on hed-python main. Put a version floor back at that release. The
+    # production Docker image replaces this with the PyPI release (deploy/Dockerfile).
+    "hedtools @ git+https://github.com/hed-standard/hed-python.git@main",
     "openpyxl>=3.1.5",
     "pandas>=2.2.3,<4.0.0",
     "Werkzeug>=3.1.3",
