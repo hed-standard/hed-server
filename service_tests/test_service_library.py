@@ -9,7 +9,7 @@ class TestLibraryServices(ServicesTest):
         url = f"{self.BASEURL}/services_submit"
         json_data = {
             "service": "events_validate",
-            "schema_version": ["8.2.0", "sc:score_1.0.0", "test:testlib_1.0.2"],
+            "schema_version": ["8.2.0", "sc:score_1.0.0", "la:lang_1.2.0"],
             "sidecar_string": self.data["jsonText"],
             "events_string": self.data["eventsText"],
             "check_for_warnings": False,
@@ -25,7 +25,7 @@ class TestLibraryServices(ServicesTest):
         url = f"{self.BASEURL}/services_submit"
         json_data = {
             "service": "events_validate",
-            "schema_version": ["8.2.0", "sc:score_1.0.0", "test:testlib_1.0.2"],
+            "schema_version": ["8.2.0", "sc:score_1.0.0", "la:lang_1.2.0"],
             "sidecar_string": self.data["jsonLibrary"],
             "events_string": self.data["eventsText"],
             "check_for_warnings": False,
@@ -50,3 +50,22 @@ class TestLibraryServices(ServicesTest):
         self.assertEqual(response.status_code, 200)
         response_data = response.json()
         self.assertEqual(response_data["results"]["msg_category"], "warning")
+        self.assertIn("TAG_NAMESPACE_PREFIX_INVALID", response_data["results"]["data"])
+
+    def test_validate_events_file_missing_one_library(self):
+        """Test that a sidecar with tags from two libraries fails when only one of them is loaded."""
+        url = f"{self.BASEURL}/services_submit"
+        json_data = {
+            "service": "events_validate",
+            "schema_version": ["8.2.0", "sc:score_1.0.0"],
+            "sidecar_string": self.data["jsonLibrary"],
+            "events_string": self.data["eventsText"],
+            "check_for_warnings": False,
+        }
+        response = requests.post(url, json=json_data, headers=self._get_headers())
+        self.assertEqual(response.status_code, 200)
+        response_data = response.json()
+        self.assertEqual(response_data["results"]["msg_category"], "warning")
+        self.assertIn("TAG_NAMESPACE_PREFIX_INVALID", response_data["results"]["data"])
+        self.assertIn("la:English", response_data["results"]["data"])
+        self.assertNotIn("sc:Photic-driving", response_data["results"]["data"])

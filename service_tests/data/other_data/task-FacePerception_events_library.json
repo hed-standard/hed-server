@@ -3,13 +3,13 @@
         "LongName": "Event category",
         "Description": "The main category of the event (library schema annotations).",
         "HED": {
-            "show_face": "Sensory-event, test:Event/Sensory-event",
-            "show_face_initial": "Sensory-event, test:Event/Sensory-event",
-            "show_circle": "Sensory-event, test:Event/Sensory-event",
-            "show_cross": "Sensory-event, test:Event/Sensory-event",
-            "left_press": "Agent-action, test:Event/Agent-action",
-            "right_press": "Agent-action, test:Event/Agent-action",
-            "double_press": "Agent-action, test:Event/Agent-action"
+            "show_face": "Sensory-event, Visual-presentation, sc:Photic-driving",
+            "show_face_initial": "Sensory-event, Visual-presentation, sc:Photic-driving",
+            "show_circle": "Sensory-event, Visual-presentation, sc:Photic-driving",
+            "show_cross": "Sensory-event, Visual-presentation, sc:Photic-driving",
+            "left_press": "Agent-action, Participant-response, la:English",
+            "right_press": "Agent-action, Participant-response, la:English",
+            "double_press": "Agent-action, Participant-response, la:English"
         }
     }
 }
