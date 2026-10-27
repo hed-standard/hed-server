@@ -31,7 +31,7 @@ The HED online tools are a set of web-based applications for validating and anal
 
 The HED online tools include an AI assistant widget powered by the Open Science Assistant (OSA). The widget script is self-hosted at `hedweb/static/js/osa-chat-widget.js`.
 
-- **Source**: https://osa-demo.pages.dev/osa-chat-widget.js
+- **Source**: https://demo.osc.earth/osa-chat-widget.js
 - **Last updated**: 2026-02-10
 - **Maintenance**: Check periodically for updates or contact the OSA team
 
