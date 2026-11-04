@@ -9,7 +9,6 @@
       "Bash(python -m sphinx *)",
       "Bash(typos *)",
       "Bash(python service_tests/run_service_tests.py)",
-      "Bash(python -c *)",
       "Bash(python --version)",
       "Bash(git status *)",
       "Bash(git log *)",
